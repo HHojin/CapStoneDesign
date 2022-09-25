@@ -1,7 +1,6 @@
 https://chulin28ho.tistory.com/426 //Unity 환경에서 윤곽선 렌더링
 https://flowtree.tistory.com/19 // Unity AI 개발 관련 참조 
-https://stickode.tistory.com/309 // Unity 3D 클릭 이벤트시 이동 관련 참조 
-
+https://docs.unity3d.com/kr/2021.3/Manual/class-CharacterController.html //계단 슬로프 설정 `
 학교 도서관 내 Unity 관련 도서 
 9/13 기준 
 
