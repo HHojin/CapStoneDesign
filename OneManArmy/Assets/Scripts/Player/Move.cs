@@ -19,7 +19,7 @@ public class Move : MonoBehaviour
         mainCamera = Camera.main;
         agent = this.GetComponent<NavMeshAgent>();
         agent.speed = nSpeed;
-        agent.angularSpeed = 760.0f;
+        agent.angularSpeed = 7600.0f;
         agent.stoppingDistance = 0;
         agent.autoBraking = false;
     }
@@ -32,7 +32,9 @@ public class Move : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
+            agent.isStopped = false;
             Move_to(MovePointReturn(ray)); 
+            //이동 장소에 이펙트 추가 
         }
 
     }
@@ -43,17 +45,17 @@ public class Move : MonoBehaviour
     // 추후 아래 함수들 따로 묶어서 기능관리, 유지보수 용이 
     void Move_to(Vector3 movePoint)
     {
-        agent.isStopped = false; //test 명령어 Dodging func완성 이후 폐기 
+        //test 명령어 Dodging func완성 이후 폐기 
         agent.SetDestination(movePoint);
         
     }
-    Vector3 MovePointReturn(Ray ray)
+   public Vector3 MovePointReturn(Ray ray)
     {
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
         {
             movePoint = raycastHit.point;
-            Debug.Log("movePoint : " + movePoint.ToString());
-            Debug.Log("맞은 객체 : " + raycastHit.transform.name);
+           // Debug.Log("movePoint : " + movePoint.ToString());
+           // Debug.Log("맞은 객체 : " + raycastHit.transform.name);
 
         }
         return movePoint;
