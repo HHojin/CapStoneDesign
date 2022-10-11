@@ -27,7 +27,7 @@ public class Move : MonoBehaviour
     void Update()
     {
 
-        mainCamera.transform.position = new Vector3(this.transform.position.x, 25, this.transform.position.z); //test용 카메라 위치 
+        
         ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Input.GetMouseButton(1))
@@ -54,8 +54,9 @@ public class Move : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
         {
             movePoint = raycastHit.point;
-           // Debug.Log("movePoint : " + movePoint.ToString());
-           // Debug.Log("맞은 객체 : " + raycastHit.transform.name);
+            Debug.Log("movePoint : " + movePoint.ToString());
+            Debug.Log("맞은 객체 : " + raycastHit.transform.name);
+            
 
         }
         return movePoint;
