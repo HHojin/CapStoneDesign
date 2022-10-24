@@ -11,6 +11,9 @@ public class Move : MonoBehaviour
     private Vector3 movePoint; // 이동 위치 저장
     public Camera mainCamera; // 메인 카메라
     public Ray ray;
+
+   public ParticleSystem ps;
+
     void Start()
     {
         //기본설정 초기화
@@ -27,31 +30,32 @@ public class Move : MonoBehaviour
     void Update()
     {
 
-        
+
         ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         //우클릭 이동 
         if (Input.GetMouseButton(1))
         {
             agent.isStopped = false;
-            Move_to(MovePointReturn(ray));
-            //이동 장소에 이펙트 추가 
-            if (Input.GetMouseButtonUp(1))
-            {
+            Vector3 movePoint = MovePointReturn(ray);
+            Move_to(movePoint);
 
-            }
         }
-
+        //이동 장소에 이펙트 추가
+        if (Input.GetMouseButtonUp(1))
+        { 
+            
+            Instantiate(ps,movePoint, Quaternion.identity);
+           
+        }
     }
 
 
-
-
-    // 추후 기능관리, 유지보수 용이 하도록 변경
-    void Move_to(Vector3 movePoint)
-    {
+        // 추후 기능관리, 유지보수 용이 하도록 변경
+        void Move_to(Vector3 movePoint)
+        {
         agent.SetDestination(movePoint);
-    }
+        }
    public Vector3 MovePointReturn(Ray ray)
     {
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
