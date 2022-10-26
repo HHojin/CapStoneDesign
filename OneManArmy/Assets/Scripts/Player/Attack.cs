@@ -21,9 +21,15 @@ public class Attack : MonoBehaviour
 
     void defaultAttack() 
     {
-        this.transform.LookAt(AttackLookatPoint());//마우스 포인터가 있는곳을 향한다 
-        GetComponent<Move>().agent.isStopped = true; //이동 중지 
-        //기본 공격모션 연결 
+        if (GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash !=
+            Animator.StringToHash("Base Layer.DefaultAttack"))
+        {
+            this.transform.LookAt(AttackLookatPoint());//마우스 포인터가 있는곳을 향한다
+            GetComponent<AnimationControl>().DefaultAttackAnim(); //공격 애니메이션 재생
+        }
+        GetComponent<Move>().agent.isStopped = true; //이동 중지
+        GetComponent<Move>().agent.velocity = Vector3.zero; //미끄러짐 방지
+
     }
     /*
      * 이런 방식으로 공격(스킬)마다 함수 생성
