@@ -26,6 +26,7 @@ public class Attack : MonoBehaviour
         {
             this.transform.LookAt(AttackLookatPoint());//마우스 포인터가 있는곳을 향한다
             GetComponent<AnimationControl>().DefaultAttackAnim(); //공격 애니메이션 재생
+            GetComponent<Move>().agent.ResetPath();
         }
         GetComponent<Move>().agent.isStopped = true; //이동 중지
         GetComponent<Move>().agent.velocity = Vector3.zero; //미끄러짐 방지
