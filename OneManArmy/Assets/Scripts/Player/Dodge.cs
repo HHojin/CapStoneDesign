@@ -18,11 +18,11 @@ public class Dodge : MonoBehaviour
         //이동 중지
         GetComponent<Move>().agent.isStopped = true;
         //데미지 무시
-        GetComponentInChildren<BoxCollider>().enabled = false;
+      GetComponent<BoxCollider>().enabled = false;
         //회피 루트모션 재생    
 
         //데미지 적용
-        GetComponentInChildren<BoxCollider>().enabled = true;
+        GetComponent<BoxCollider>().enabled = true;
 
         /*회피 애니메이션 끝난 이후 이동 가능
             if(isAnimationPlaying == flase)

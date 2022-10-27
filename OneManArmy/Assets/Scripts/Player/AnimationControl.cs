@@ -15,5 +15,7 @@ public class AnimationControl : MonoBehaviour
     public void DefaultAttackAnim()
     {
         animator.SetTrigger("defaultAttack");
+       
     }
+
 }

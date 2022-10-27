@@ -3,6 +3,7 @@ https://flowtree.tistory.com/19 // Unity AI 개발 관련 참조
 https://docs.unity3d.com/kr/2021.3/Manual/class-CharacterController.html //계단 슬로프 설정 `
 https://euncero.tistory.com/429 // 게임 매니저 관련 
 https://angliss.cc/cam-follow-gameobject/ //카메라 관련 
+https://beatchoi.github.io/unity3d/fundamentals/2021/07/30/CharacterStats/ // status 관련 
 
 9/13 기준 
 

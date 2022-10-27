@@ -40,14 +40,14 @@ public class Move : MonoBehaviour
             Move_to(movePoint);
         }
         //이동 장소에 이펙트 추가
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1))//애니메이션 끝일때만 나오도록 수정해야함 
         {
             Instantiate(ps, movePoint, Quaternion.identity);
         }
 
         if(DestinationArrived())
         {
-            Debug.Log("Arrived");
+           // Debug.Log("Arrived");
             GetComponent<AnimationControl>().WalkAnim(false);
         }
     }
