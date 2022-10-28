@@ -25,4 +25,9 @@ public class EnemyAnimationControl : MonoBehaviour
         }
 
     }
+
+    public void LookPlayer()
+    {
+        this.transform.LookAt(GetComponent<Enemy_move>().GOplayer.transform); // 공격시 플레이어 바라봄
+    }
 }
