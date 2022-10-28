@@ -21,7 +21,7 @@ public class Attack : MonoBehaviour
 
         }
         if (GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.DefaultAttack") &&
-GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
             Hit_zone.enabled = false;//애니메이션 끝나면 공격판정 삭제
         }
