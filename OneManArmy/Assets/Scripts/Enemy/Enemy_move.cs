@@ -8,20 +8,22 @@ public class Enemy_move : MonoBehaviour
 {
 
     public NavMeshAgent NVagent;
-
+    EnemyStatus stat;
     public GameObject GOplayer = null;
     public bool trace = false;
 
     private void Awake()
     {
+        stat = GetComponent<EnemyStatus>();
         GOplayer = GameObject.Find("Main_player");
+      
     }
 
     // Start is called before the first frame update
     void Start()
     {
         NVagent = this.GetComponent<NavMeshAgent>();
-
+        NVagent.speed = stat.Move_speed;
     }
 
     // Update is called once per frame

@@ -6,10 +6,12 @@ using UnityEngine;
 public class Enemy_Attack: MonoBehaviour
 {
     Transform parent;
+   
 
     void Start()
     {
         parent = this.transform.parent;
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -20,6 +22,7 @@ public class Enemy_Attack: MonoBehaviour
             Debug.LogWarning("Play Attack motion & stand");// 이동 멈추고 공격모션 나와야함 
             //공격 애니메이션 재생
             parent.GetComponent<EnemyAnimationControl>().AttackAnim(true);
+        
         }
     }
 

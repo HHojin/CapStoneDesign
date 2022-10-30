@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Hit : MonoBehaviour
 {
-    // Start is called before the first frame update
-     void OnCollisionEnter(Collision collision)
+    private void Start()
     {
-        if (collision.transform.tag == "Enemy")
+        this.GetComponent<BoxCollider>().enabled = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Enemy")
         {
-            //利 单固瘤 贸府
+            Debug.LogError("Hit");//利 单固瘤 贸府
+            other.GetComponent<EnemyStatus>().TakeDamage(transform.parent.GetComponent<PlayerStat>().Attack_power.GetStat());
+            Debug.LogError(other.GetComponent<EnemyStatus>().Currnet_HP);
+
         }
     }
 }
