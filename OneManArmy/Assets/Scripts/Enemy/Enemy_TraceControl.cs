@@ -13,9 +13,9 @@ public class Enemy_TraceControl : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Main_player")
+        if (other.gameObject.tag == "Enemy")
         {
-            GetComponentInParent<Enemy_move>().trace = true;
+            other.GetComponentInParent<Enemy_move>().trace = true;
         }
 
     }

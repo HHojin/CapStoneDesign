@@ -14,7 +14,7 @@ public class Enemy_Attack: MonoBehaviour
        
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //이거 그냥 거리 따라서 공격모션 나오는거로 할까? 다음주 회의내용
     {
       
         if (other.gameObject.name == "Main_player")

@@ -9,9 +9,9 @@ public class EnemyHit : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            Debug.LogError("Enemy's Hit");//利 单固瘤 贸府
+            Debug.LogWarning("Enemy's Hit");//利 单固瘤 贸府
             other.GetComponent<PlayerStat>().TakeDamage(Enemy.GetComponent<EnemyStatus>().Attack_power.GetStat());
-            Debug.LogError(other.GetComponent<PlayerStat>().Currnet_HP);
+            Debug.LogWarning(other.GetComponent<PlayerStat>().Currnet_HP);
         }
     }
 }
