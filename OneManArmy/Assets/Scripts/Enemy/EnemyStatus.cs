@@ -39,25 +39,15 @@ public class EnemyStatus : MonoBehaviour
             //플레이어에게 경험치 줌 
 
             player_stat.EXP += this.EXP;
-            EXPcheck();
+            //EXP 체크 이후 레벨상승 시 발생 이벤트 
+            player_stat.EXPcheck();
             Debug.LogError("적 사망");
             EnemyDeath();
 
         }
     }
-    //EXP 체크 이후 레벨상승 시 발생 이벤트 
-    private void EXPcheck()
-    {
-       
-        //레벨 상승 
-        if (player_stat.EXP >= 100)//레벨업 필요수치는 배열로? 고정?
-        {
-            player_stat.Level++;
-            player_stat.EXP = 0;
-            //UI/UX
-        }
-
-    }
+    
+ 
 
     private void EnemyDeath()
     {

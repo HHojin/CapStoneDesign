@@ -37,4 +37,16 @@ public class PlayerStat : MonoBehaviour
             UIManager.instance.UpdateGameoverUI(true);
         }
     }
+    public void EXPcheck()
+    {
+        Debug.LogWarning("EXPcheck");
+        //레벨 상승 
+        if (this.EXP >= 100)//레벨업 필요수치는 배열로? 고정?
+        {
+            this.Level++;
+            this.EXP = 0;
+            //UI/UX
+        }
+
+    }
 }
