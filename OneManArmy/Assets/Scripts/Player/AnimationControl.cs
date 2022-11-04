@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AnimationControl : MonoBehaviour
 {
-
     public Animator animator;
 
     public void WalkAnim(bool canWalk)
@@ -15,5 +14,10 @@ public class AnimationControl : MonoBehaviour
     public void DefaultAttackAnim()
     {
         animator.SetTrigger("defaultAttack");
+    }
+
+    public void DodgeAnim()
+    {
+        animator.SetTrigger("Dodge");
     }
 }

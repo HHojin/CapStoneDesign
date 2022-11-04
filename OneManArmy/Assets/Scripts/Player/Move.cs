@@ -5,8 +5,6 @@ using UnityEngine.AI;
 public class Move : MonoBehaviour
 {
 
-
-
     public NavMeshAgent agent;
     private Vector3 movePoint; // 이동 위치 저장
     public Camera mainCamera; // 메인 카메라
