@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Status
-{    
+public class Stat
+{
     [SerializeField]
-        private int baseStat;
+    private int baseStat;
 
     public void SetStat(int stat)
     {
         baseStat = stat;
     }
-        public int GetStat()
-        {
-            return baseStat;
-        } 
+    public int GetStat()
+    {
+        return baseStat;
+    }
 }

@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStatus : MonoBehaviour
+public class EnemyStat : MonoBehaviour
 {
-    public float MaxHP = 100.0f;
+    public Stat MaxHP;
     public float Currnet_HP { get; set; }
     public float Move_speed = 5.0f;
-    public Status Attack_power;
+    public Stat Attack_power;
     public float EXP = 10; //사망시 플레이어에게 주는 EXP
     public Transform player;
     PlayerStat player_stat;
@@ -20,9 +20,10 @@ public class EnemyStatus : MonoBehaviour
 
     private void Awake()
     {
-        Currnet_HP = MaxHP;
+        MaxHP.SetStat(100);
+        Currnet_HP = MaxHP.GetStat();
         Attack_power.SetStat(15);
-         player_stat = player.GetComponent<PlayerStat>();
+        player_stat = player.GetComponent<PlayerStat>();
     }
 
     public void TakeDamage(int damage)
@@ -30,14 +31,12 @@ public class EnemyStatus : MonoBehaviour
         Currnet_HP -= damage;
         damageCheck();
     }
+
     void damageCheck()
     {
         if (Currnet_HP <= 0)
         {
-            
-
             //플레이어에게 경험치 줌 
-
             player_stat.EXP += this.EXP;
             //EXP 체크 이후 레벨상승 시 발생 이벤트 
             player_stat.EXPcheck();
@@ -46,15 +45,11 @@ public class EnemyStatus : MonoBehaviour
 
         }
     }
-    
- 
 
     private void EnemyDeath()
     {
         //사망 애니메이션 작동 후 
-     
-       
-        Destroy(this.gameObject,2.0f);//2초뒤 제거
+        Destroy(this.gameObject, 2.0f);//2초뒤 제거
     }
-   
+
 }

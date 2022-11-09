@@ -8,13 +8,13 @@ public class Enemy_move : MonoBehaviour
 {
 
     public NavMeshAgent NVagent;
-    EnemyStatus stat;
+    EnemyStat stat;
     public GameObject GOplayer = null;
     public bool trace = false;
 
     private void Awake()
     {
-        stat = GetComponent<EnemyStatus>();
+        stat = GetComponent<EnemyStat>();
         GOplayer = GameObject.Find("Main_player");
       
     }

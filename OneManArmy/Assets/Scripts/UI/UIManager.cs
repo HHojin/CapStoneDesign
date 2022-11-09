@@ -20,16 +20,146 @@ public class UIManager : MonoBehaviour
 
     private static UIManager m_instance;
 
+    public GameObject player;
+
+    [Header("HpUI")]
     public Text hpText;
     public Image hpBar;
     public Image curHpBar;
+
+    [Header("StatUI")]
+    public GameObject statUI;
+    public Text statText;
+    public Text statPointText;
+
+    [Header("Stat Icon")]
+    public GameObject[] Health;
+    public GameObject[] Damage;
+    public GameObject[] Stealth;
+    public GameObject[] Armor;
+    private int[] statPointUsed = new int[] { -1, -1, -1, -1 };
+    private int[] tmpStatPointUsed = new int[4];
+    private Color yellow = new Color32(240, 255, 16, 255);
+    private Color Green = new Color32(65, 248, 105, 255);
+    private Color Origin = new Color32(255, 255, 255, 255);
+
+
+    private int statPoint = 3;
+    private int curStatPoint = 3;
+    private string statType;
+    private int[,] tmpStatAmount = new int[,] { {0, 100},{0, 100},{0, 100},{0, 50} };
+    // {{health,health증가율}, {damage,damage증가율},{stealth,stealth증가율},{armor,armor증가율}}
+
+    [Space (10f)]
     public GameObject gameoverUI;
+
+    public void ActiveStatUI(bool active)
+    {
+        if(active == true)
+        {
+            Time.timeScale = 0;
+            ResetStatPoint();
+            UpdatePlayerStatText();
+            statUI.SetActive(active);
+        }
+        else
+        {
+            if (curStatPoint == 0)
+            {
+                player.GetComponent<PlayerStat>().MaxHP.SetStat(player.GetComponent<PlayerStat>().MaxHP.GetStat() + tmpStatAmount[0, 0]);
+                player.GetComponent<PlayerStat>().Current_HP += tmpStatAmount[0, 0];
+                UpdateHp(player.GetComponent<PlayerStat>().Current_HP);
+
+                player.GetComponent<PlayerStat>().Attack_power.SetStat(player.GetComponent<PlayerStat>().Attack_power.GetStat() + tmpStatAmount[1, 0]);
+                //player.GetComponent<PlayerStat>().Stealth.SetStat(player.GetComponent<PlayerStat>().Stealth.GetStat() + tmpStatAmount[2, 0]);
+                player.GetComponent<PlayerStat>().Armor.SetStat(player.GetComponent<PlayerStat>().Armor.GetStat() + tmpStatAmount[3, 0]);
+
+                for(int i = 0; i < 4; i++)
+                {
+                    statPointUsed[i] = tmpStatPointUsed[i];
+                }
+
+                Time.timeScale = 1.0f;
+                UpdateStatIcon(Green);
+                ResetStatPoint();
+                statUI.SetActive(active);
+            }
+            else
+            {
+                Debug.LogWarning("StatPoint remain");
+            }
+        }
+    }
+
+    public void StatName(string name)
+    {
+        statType = name;
+    }
+
+    public void UpdateStatLevel()
+    {
+        if (curStatPoint != 0 && tmpStatPointUsed[0] != 5 && tmpStatPointUsed[1] != 5 && tmpStatPointUsed[2] != 5 && tmpStatPointUsed[3] != 5) {
+            curStatPoint -= 1;
+            switch (statType)
+            {
+                case "Health":
+                    tmpStatAmount[0, 0] += tmpStatAmount[0, 1];
+                    tmpStatPointUsed[0] += 1;
+                    Health[tmpStatPointUsed[0]].transform.GetChild(0).GetComponent<Image>().color = yellow;
+                    break;
+                case "Damage":
+                    tmpStatAmount[1, 0] += tmpStatAmount[1, 1];
+                    tmpStatPointUsed[1] += 1;
+                    Damage[tmpStatPointUsed[1]].transform.GetChild(0).GetComponent<Image>().color = yellow;
+                    break;
+                case "Stealth":
+                    tmpStatAmount[2, 0] += tmpStatAmount[2, 1];
+                    tmpStatPointUsed[2] += 1;
+                    Stealth[tmpStatPointUsed[2]].transform.GetChild(0).GetComponent<Image>().color = yellow;
+                    break;
+                case "Armor":
+                    tmpStatAmount[3, 0] += tmpStatAmount[3, 1];
+                    tmpStatPointUsed[3] += 1;
+                    Armor[tmpStatPointUsed[3]].transform.GetChild(0).GetComponent<Image>().color = yellow;
+                    break;
+            }
+
+            UpdatePlayerStatText();
+        }
+    }
+
+    public void ResetStatPoint()
+    {
+        curStatPoint = statPoint;
+        for(int i = 0; i < 4; i++)
+        {
+            tmpStatAmount[i, 0] = 0;
+            tmpStatPointUsed[i] = statPointUsed[i];
+        }
+        UpdateStatIcon(Origin);
+        UpdatePlayerStatText();
+    }
+
+    public void UpdateStatIcon(Color c)
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            if (Health[i].transform.GetChild(0).GetComponent<Image>().color == yellow)
+                Health[i].transform.GetChild(0).GetComponent<Image>().color = c;
+            if (Damage[i].transform.GetChild(0).GetComponent<Image>().color == yellow)
+                Damage[i].transform.GetChild(0).GetComponent<Image>().color = c;
+            if (Stealth[i].transform.GetChild(0).GetComponent<Image>().color == yellow)
+                Stealth[i].transform.GetChild(0).GetComponent<Image>().color = c;
+            if (Armor[i].transform.GetChild(0).GetComponent<Image>().color == yellow)
+                Armor[i].transform.GetChild(0).GetComponent<Image>().color = c;
+        }
+    }
 
     public void UpdateHp(float hp)
     {
-        hpText.text = hp.ToString();
+        hpText.text = player.GetComponent<PlayerStat>().Current_HP.ToString();
 
-        curHpBar.fillAmount = hp / 100.0f;
+        curHpBar.fillAmount = hp / player.GetComponent<PlayerStat>().MaxHP.GetStat();
         StartCoroutine(UpdateHpBar());
     }
 
@@ -41,6 +171,16 @@ public class UIManager : MonoBehaviour
             if (hpBar.fillAmount != curHpBar.fillAmount)
                 hpBar.fillAmount = Mathf.Lerp(hpBar.fillAmount, curHpBar.fillAmount, Time.deltaTime * 2.0f);
         }
+    }
+
+    public void UpdatePlayerStatText()
+    {
+        statPointText.text = curStatPoint.ToString();
+        //Stat_Board text
+        statText.text = "Health : " + player.GetComponent<PlayerStat>().MaxHP.GetStat() + "(+" + tmpStatAmount[0,0] + ")\n"
+            + "Damage : " + player.GetComponent<PlayerStat>().Attack_power.GetStat() + "(+" + tmpStatAmount[1, 0] + ")\n"
+            + "Stealth : ??" /* + player.GetComponent<PlayerStat>().Stealth*/ + "(+" + tmpStatAmount[2, 0] + ")\n"
+            + "Armor : " + player.GetComponent<PlayerStat>().Armor.GetStat() + "(+" + tmpStatAmount[3, 0] + ")";
     }
 
     public void UpdateGameoverUI(bool active)
