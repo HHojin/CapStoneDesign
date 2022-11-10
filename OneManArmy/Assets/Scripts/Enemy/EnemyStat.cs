@@ -40,7 +40,7 @@ public class EnemyStat : MonoBehaviour
             player_stat.EXP += this.EXP;
             //EXP 체크 이후 레벨상승 시 발생 이벤트 
             player_stat.EXPcheck();
-            Debug.LogError("적 사망");
+           // Debug.LogError("적 사망");
             EnemyDeath();
 
         }

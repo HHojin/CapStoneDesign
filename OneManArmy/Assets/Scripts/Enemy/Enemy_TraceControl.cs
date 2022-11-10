@@ -4,19 +4,38 @@ using UnityEngine;
 
 public class Enemy_TraceControl : MonoBehaviour
 {
-
-    // Update is called once per frame
-    void Update()
+    public BoxCollider trigger;
+    PlayerStat stat;
+    Vector3 default_size;
+  
+    private void Awake()
     {
-        //스텔스 능력치에 따라 Collider 크기 변경, 이벤트 핸들러 또는 다른 방법 강구해볼 것 
+        stat = GetComponentInParent<PlayerStat>();
+        trigger = this.gameObject.GetComponent<BoxCollider>();
 
     }
+    
+    private void Start()
+    {
+       
+        
+        default_size.Set(7.0f * stat.Stealth.GetStat() / 100, 0.2f, 7.0f * stat.Stealth.GetStat() / 100);
+
+        ((BoxCollider)trigger).size = default_size;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
             other.GetComponentInParent<Enemy_move>().trace = true;
         }
+
+    }
+    public void TriggerSizeUpdate()
+    {
+        ((BoxCollider)trigger).size = new Vector3(7.0f * stat.Stealth.GetStat() / 100, 0.2f, 7.0f * stat.Stealth.GetStat() / 100);
+        
 
     }
 }

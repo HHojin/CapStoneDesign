@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
     private int statPoint = 3;
     private int curStatPoint = 3;
     private string statType;
-    private int[,] tmpStatAmount = new int[,] { {0, 100},{0, 100},{0, 100},{0, 50} };
+    private int[,] tmpStatAmount = new int[,] { {0, 100},{0, 100},{0, 5},{0, 50} };
     // {{health,health증가율}, {damage,damage증가율},{stealth,stealth증가율},{armor,armor증가율}}
 
     [Space (10f)]
@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
                 UpdateHp(player.GetComponent<PlayerStat>().Current_HP);
 
                 player.GetComponent<PlayerStat>().Attack_power.SetStat(player.GetComponent<PlayerStat>().Attack_power.GetStat() + tmpStatAmount[1, 0]);
-                //player.GetComponent<PlayerStat>().Stealth.SetStat(player.GetComponent<PlayerStat>().Stealth.GetStat() + tmpStatAmount[2, 0]);
+                player.GetComponent<PlayerStat>().Stealth.SetStat(player.GetComponent<PlayerStat>().Stealth.GetStat() - tmpStatAmount[2, 0]);
                 player.GetComponent<PlayerStat>().Armor.SetStat(player.GetComponent<PlayerStat>().Armor.GetStat() + tmpStatAmount[3, 0]);
 
                 for(int i = 0; i < 4; i++)
@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 1.0f;
                 UpdateStatIcon(Green);
                 ResetStatPoint();
+                player.GetComponent<PlayerStat>().TraceTriggerUpdate();
                 statUI.SetActive(active);
             }
             else
@@ -179,7 +180,7 @@ public class UIManager : MonoBehaviour
         //Stat_Board text
         statText.text = "Health : " + player.GetComponent<PlayerStat>().MaxHP.GetStat() + "(+" + tmpStatAmount[0,0] + ")\n"
             + "Damage : " + player.GetComponent<PlayerStat>().Attack_power.GetStat() + "(+" + tmpStatAmount[1, 0] + ")\n"
-            + "Stealth : ??" /* + player.GetComponent<PlayerStat>().Stealth*/ + "(+" + tmpStatAmount[2, 0] + ")\n"
+            + "Stealth : ??" + player.GetComponent<PlayerStat>().Stealth + "(+" + tmpStatAmount[2, 0] + ")\n"
             + "Armor : " + player.GetComponent<PlayerStat>().Armor.GetStat() + "(+" + tmpStatAmount[3, 0] + ")";
     }
 
