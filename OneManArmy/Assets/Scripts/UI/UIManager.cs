@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
     private int statPoint = 3;
     private int curStatPoint = 3;
     private string statType;
-    private int[,] tmpStatAmount = new int[,] { {0, 100},{0, 100},{0, 5},{0, 50} };
+    private int[,] tmpStatAmount = new int[,] { {0, 10},{0, 2},{0, 5},{0, 2} };
     // {{health,health증가율}, {damage,damage증가율},{stealth,stealth증가율},{armor,armor증가율}}
 
     [Space (10f)]
