@@ -9,12 +9,13 @@ Shader "Custom/player"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Opaque + 1" }
         LOD 200
-        
-            stencil
+
+            Stencil
         {
-            Comp always
+            Ref 2
+            Comp Always
             ZFail Replace
         }
         CGPROGRAM
