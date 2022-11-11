@@ -15,7 +15,7 @@ public class Enemy_move : MonoBehaviour
     private void Awake()
     {
         stat = GetComponent<EnemyStat>();
-        GOplayer = GameObject.Find("Main_player");
+        GOplayer = GameObject.FindWithTag("Player");
       
     }
 
