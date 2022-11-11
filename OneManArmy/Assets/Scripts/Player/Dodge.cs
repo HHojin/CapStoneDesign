@@ -5,6 +5,8 @@ using UnityEngine;
 public class Dodge : MonoBehaviour
 {
     private bool canDodge = true;
+    public GameObject hit_zone;
+    private Vector3 dodgeVector;
 
     void Update()
     {
@@ -17,13 +19,18 @@ public class Dodge : MonoBehaviour
     {
         canDodge = false;
         GetComponent<Move>().agent.isStopped = true; //이동 중지
-        transform.Find("Hit_zone").gameObject.GetComponent<BoxCollider>().enabled = false; //데미지 무시
-        //GetComponent<AnimationControl>().DodgeAnim(); //회피 모션 재생   
+        GetComponent<Move>().agent.ResetPath();
+        hit_zone.GetComponent<BoxCollider>().enabled = false; //데미지 무시
 
-        //StartCoroutine(CheckDodgeAnim());
+        dodgeVector = GetComponent<Move>().MovePointReturn(Camera.main.ScreenPointToRay(Input.mousePosition));
+        this.transform.LookAt(dodgeVector);
+
+        GetComponent<AnimationControl>().DodgeAnim(); //회피 모션 재생
+
+        StartCoroutine(CheckDodgeAnim());
     }
 
-    /*
+
     IEnumerator CheckDodgeAnim()
     {
         while (true)
@@ -32,12 +39,13 @@ public class Dodge : MonoBehaviour
             if (GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash !=
             Animator.StringToHash("Base Layer.Dodge"))
             {
-                transform.Find("Hit_zone").gameObject.GetComponent<BoxCollider>().enabled = true; //데미지 적용
+                //this.transform.position = GetComponent<AnimationControl>().animator.rootPosition;
+                hit_zone.GetComponent<BoxCollider>().enabled = true; //데미지 적용
                 GetComponent<Move>().agent.isStopped = false; //이동 가능
                 canDodge = true;
                 break;
             }
         }
     }
-    */
+    
 }

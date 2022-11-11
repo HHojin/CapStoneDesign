@@ -180,7 +180,7 @@ public class UIManager : MonoBehaviour
         //Stat_Board text
         statText.text = "Health : " + player.GetComponent<PlayerStat>().MaxHP.GetStat() + "(+" + tmpStatAmount[0,0] + ")\n"
             + "Damage : " + player.GetComponent<PlayerStat>().Attack_power.GetStat() + "(+" + tmpStatAmount[1, 0] + ")\n"
-            + "Stealth : ??" + player.GetComponent<PlayerStat>().Stealth + "(+" + tmpStatAmount[2, 0] + ")\n"
+            + "Stealth : " + player.GetComponent<PlayerStat>().Stealth.GetStat() + "(+" + tmpStatAmount[2, 0] + ")\n"
             + "Armor : " + player.GetComponent<PlayerStat>().Armor.GetStat() + "(+" + tmpStatAmount[3, 0] + ")";
     }
 

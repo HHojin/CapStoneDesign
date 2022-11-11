@@ -18,7 +18,7 @@ public class Move : MonoBehaviour
        
 
         mainCamera = Camera.main;
-        agent = this.GetComponent<NavMeshAgent>();
+        agent = this.transform.GetChild(0).GetComponent<NavMeshAgent>();
         agent.speed = GetComponent<PlayerStat>().Move_speed;
         agent.angularSpeed = 7600.0f;
         agent.stoppingDistance = 0;
