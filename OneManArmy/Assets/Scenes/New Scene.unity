@@ -5569,11 +5569,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224544318620525178, guid: ccd64f90b962e4a789be11ce73c18abe, type: 3}
   m_PrefabInstance: {fileID: 1200129185}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1233813093 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8838999455872389279, guid: 38b69cf3c65cab14e85bf849d36ffdec, type: 3}
-  m_PrefabInstance: {fileID: 2091595673463262509}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &1233813095 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 2164792993923643764, guid: 38b69cf3c65cab14e85bf849d36ffdec, type: 3}
@@ -10524,7 +10519,7 @@ PrefabInstance:
     - target: {fileID: 218062114971697894, guid: 38b69cf3c65cab14e85bf849d36ffdec, type: 3}
       propertyPath: hit_zone
       value: 
-      objectReference: {fileID: 1233813093}
+      objectReference: {fileID: 936128858}
     - target: {fileID: 732005957393176803, guid: 38b69cf3c65cab14e85bf849d36ffdec, type: 3}
       propertyPath: m_Enabled
       value: 1

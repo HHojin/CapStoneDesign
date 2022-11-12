@@ -20,7 +20,7 @@ public class Dodge : MonoBehaviour
         canDodge = false;
         GetComponent<Move>().agent.isStopped = true; //이동 중지
         GetComponent<Move>().agent.ResetPath();
-        hit_zone.GetComponent<BoxCollider>().enabled = false; //데미지 무시
+        hit_zone.GetComponent<CapsuleCollider>().enabled = false; //데미지 무시
 
         dodgeVector = GetComponent<Move>().MovePointReturn(Camera.main.ScreenPointToRay(Input.mousePosition));
         this.transform.LookAt(dodgeVector);
@@ -40,7 +40,7 @@ public class Dodge : MonoBehaviour
             Animator.StringToHash("Base Layer.Dodge"))
             {
                 //this.transform.position = GetComponent<AnimationControl>().animator.rootPosition;
-                hit_zone.GetComponent<BoxCollider>().enabled = true; //데미지 적용
+                hit_zone.GetComponent<CapsuleCollider>().enabled = true; //데미지 적용
                 GetComponent<Move>().agent.isStopped = false; //이동 가능
                 canDodge = true;
                 break;
