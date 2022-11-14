@@ -60,11 +60,11 @@ public class Move : MonoBehaviour
             //Debug.Log("set destination");
             agent.SetDestination(movePoint);
             GetComponent<AnimationControl>().WalkAnim(true);
-            agent.isStopped = false;
+            MoveGo();
         }
         else
         {
-            agent.isStopped = true; // 공격 모션중 이동 방지
+           MoveStop(); // 공격 모션중 이동 방지
         }
 
     }
@@ -100,6 +100,15 @@ public class Move : MonoBehaviour
         }
         return false;
     }
-
+    public void MoveStop()
+    {
+        agent.isStopped = true;
+        GetComponent<AnimationControl>().WalkAnim(false);
+       
+    }
+    public void MoveGo() 
+    {
+        agent.isStopped = false;
+    }
 }
 

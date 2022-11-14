@@ -50,7 +50,8 @@ public class PlayerStat : MonoBehaviour
             this.Level++;
             this.EXP = 0;
             //UI/UX
-            GameManager.instance.LevelUP();    
+            GameManager.instance.LevelUP();
+            SaveLoad.instance.SaveData();
         }
         TraceTriggerUpdate();
     }
