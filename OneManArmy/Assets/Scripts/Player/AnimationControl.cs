@@ -20,4 +20,14 @@ public class AnimationControl : MonoBehaviour
     {
         animator.SetTrigger("Dodge");
     }
+
+    public void DeathAnim()
+    {
+        animator.SetTrigger("Death");
+    }
+
+    public void StopAnim()
+    {
+        animator.speed = 0.0f;
+    }
 }

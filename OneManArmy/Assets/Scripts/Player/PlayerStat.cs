@@ -35,8 +35,10 @@ public class PlayerStat : MonoBehaviour
     {
         if (Current_HP <= 0)
         {
+            this.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = false;
             //사망이벤트, 게임오버 씬으로 이동
-            UIManager.instance.UpdateGameoverUI(true);
+            this.transform.GetChild(0).GetComponent<AnimationControl>().DeathAnim();
+            GameManager.instance.GameOver();
         }
     }
     public void EXPcheck()
@@ -48,14 +50,12 @@ public class PlayerStat : MonoBehaviour
             this.Level++;
             this.EXP = 0;
             //UI/UX
-            UIManager.instance.ActiveStatUI(true);
-            
+            GameManager.instance.LevelUP();    
         }
         TraceTriggerUpdate();
     }
     public void TraceTriggerUpdate()
     {
         this.GetComponentInChildren<Enemy_TraceControl>().TriggerSizeUpdate();
-      
     }
 }

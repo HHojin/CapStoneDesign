@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -22,12 +23,12 @@ public class UIManager : MonoBehaviour
 
     public GameObject player;
 
-    [Header("HpUI")]
+    [Header("Hp UI")]
     public Text hpText;
     public Image hpBar;
     public Image curHpBar;
 
-    [Header("StatUI")]
+    [Header("Stat UI")]
     public GameObject statUI;
     public Text statText;
     public Text statPointText;
@@ -47,15 +48,15 @@ public class UIManager : MonoBehaviour
     private int statPoint = 3;
     private int curStatPoint = 3;
     private string statType;
-    private int[,] tmpStatAmount = new int[,] { {0, 10},{0, 2},{0, 5},{0, 2} };
+    private int[,] tmpStatAmount = new int[,] { { 0, 10 }, { 0, 2 }, { 0, 5 }, { 0, 2 } };
     // {{health,health증가율}, {damage,damage증가율},{stealth,stealth증가율},{armor,armor증가율}}
 
-    [Space (10f)]
+    [Header("GameOver UI")]
     public GameObject gameoverUI;
 
     public void ActiveStatUI(bool active)
     {
-        if(active == true)
+        if (active == true)
         {
             Time.timeScale = 0;
             ResetStatPoint();
@@ -74,7 +75,7 @@ public class UIManager : MonoBehaviour
                 player.GetComponent<PlayerStat>().Stealth.SetStat(player.GetComponent<PlayerStat>().Stealth.GetStat() - tmpStatAmount[2, 0]);
                 player.GetComponent<PlayerStat>().Armor.SetStat(player.GetComponent<PlayerStat>().Armor.GetStat() + tmpStatAmount[3, 0]);
 
-                for(int i = 0; i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     statPointUsed[i] = tmpStatPointUsed[i];
                 }
@@ -99,7 +100,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateStatLevel()
     {
-        if (curStatPoint != 0 && tmpStatPointUsed[0] != 5 && tmpStatPointUsed[1] != 5 && tmpStatPointUsed[2] != 5 && tmpStatPointUsed[3] != 5) {
+        if (curStatPoint != 0 && tmpStatPointUsed[0] != 5 && tmpStatPointUsed[1] != 5 && tmpStatPointUsed[2] != 5 && tmpStatPointUsed[3] != 5)
+        {
             curStatPoint -= 1;
             switch (statType)
             {
@@ -132,7 +134,7 @@ public class UIManager : MonoBehaviour
     public void ResetStatPoint()
     {
         curStatPoint = statPoint;
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             tmpStatAmount[i, 0] = 0;
             tmpStatPointUsed[i] = statPointUsed[i];
@@ -143,7 +145,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateStatIcon(Color c)
     {
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
         {
             if (Health[i].transform.GetChild(0).GetComponent<Image>().color == yellow)
                 Health[i].transform.GetChild(0).GetComponent<Image>().color = c;
@@ -178,7 +180,7 @@ public class UIManager : MonoBehaviour
     {
         statPointText.text = curStatPoint.ToString();
         //Stat_Board text
-        statText.text = "Health : " + player.GetComponent<PlayerStat>().MaxHP.GetStat() + "(+" + tmpStatAmount[0,0] + ")\n"
+        statText.text = "Health : " + player.GetComponent<PlayerStat>().MaxHP.GetStat() + "(+" + tmpStatAmount[0, 0] + ")\n"
             + "Damage : " + player.GetComponent<PlayerStat>().Attack_power.GetStat() + "(+" + tmpStatAmount[1, 0] + ")\n"
             + "Stealth : " + player.GetComponent<PlayerStat>().Stealth.GetStat() + "(+" + tmpStatAmount[2, 0] + ")\n"
             + "Armor : " + player.GetComponent<PlayerStat>().Armor.GetStat() + "(+" + tmpStatAmount[3, 0] + ")";
@@ -186,6 +188,16 @@ public class UIManager : MonoBehaviour
 
     public void UpdateGameoverUI(bool active)
     {
-        gameoverUI.SetActive(active); //미구현
+        gameoverUI.SetActive(active);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Game");
     }
 }

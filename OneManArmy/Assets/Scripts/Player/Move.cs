@@ -15,7 +15,7 @@ public class Move : MonoBehaviour
     void Start()
     {
         //기본설정 초기화
-       
+
 
         mainCamera = Camera.main;
         agent = this.GetComponent<NavMeshAgent>();
@@ -27,26 +27,27 @@ public class Move : MonoBehaviour
 
     void Update()
     {
-
-
-        ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-        //우클릭 이동 
-        if (Input.GetMouseButton(1))
+        if (!GameManager.instance.isGameOver)
         {
-            Vector3 movePoint = MovePointReturn(ray);
-            Move_to(movePoint);
-        }
-        //이동 장소에 이펙트 추가
-        if (Input.GetMouseButtonUp(1) && Time.timeScale != 0)//애니메이션 끝일때만 나오도록 수정해야함 
-        {
-            Instantiate(ps, movePoint, Quaternion.identity);
-        }
+            ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        if(DestinationArrived())
-        {
-           // Debug.Log("Arrived");
-            GetComponent<AnimationControl>().WalkAnim(false);
+            //우클릭 이동 
+            if (Input.GetMouseButton(1))
+            {
+                Vector3 movePoint = MovePointReturn(ray);
+                Move_to(movePoint);
+            }
+            //이동 장소에 이펙트 추가
+            if (Input.GetMouseButtonUp(1) && Time.timeScale != 0)//애니메이션 끝일때만 나오도록 수정해야함 
+            {
+                Instantiate(ps, movePoint, Quaternion.identity);
+            }
+
+            if (DestinationArrived())
+            {
+                // Debug.Log("Arrived");
+                GetComponent<AnimationControl>().WalkAnim(false);
+            }
         }
     }
 

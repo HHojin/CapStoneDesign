@@ -10,6 +10,8 @@ public class EnemyStat : MonoBehaviour
     public float Move_speed = 5.0f;
     public Stat Attack_power;
     public float EXP = 10; //사망시 플레이어에게 주는 EXP
+    public GameObject[] bodyParts;
+
     public Transform player;
     PlayerStat player_stat;
     // public int Level = 1;
@@ -36,13 +38,14 @@ public class EnemyStat : MonoBehaviour
     {
         if (Currnet_HP <= 0)
         {
+            GetComponent<CapsuleCollider>().enabled = false;
             //플레이어에게 경험치 줌 
             player_stat.EXP += this.EXP;
             //EXP 체크 이후 레벨상승 시 발생 이벤트 
             player_stat.EXPcheck();
-           // Debug.LogError("적 사망");
+            // Debug.LogError("적 사망");
+            GetComponent<EnemyAnimationControl>().DeathAnim();
             EnemyDeath();
-
         }
     }
 

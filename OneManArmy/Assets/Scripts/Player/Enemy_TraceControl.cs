@@ -12,13 +12,10 @@ public class Enemy_TraceControl : MonoBehaviour
     {
         stat = GetComponentInParent<PlayerStat>();
         trigger = this.gameObject.GetComponent<BoxCollider>();
-
     }
     
     private void Start()
     {
-       
-        
         default_size.Set(7.0f * stat.Stealth.GetStat() / 100, 0.2f, 7.0f * stat.Stealth.GetStat() / 100);
 
         ((BoxCollider)trigger).size = default_size;
@@ -35,7 +32,5 @@ public class Enemy_TraceControl : MonoBehaviour
     public void TriggerSizeUpdate()
     {
         ((BoxCollider)trigger).size = new Vector3(7.0f * stat.Stealth.GetStat() / 100, 0.2f, 7.0f * stat.Stealth.GetStat() / 100);
-        
-
     }
 }
