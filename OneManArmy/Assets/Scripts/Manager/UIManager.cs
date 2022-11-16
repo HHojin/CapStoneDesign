@@ -200,14 +200,4 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
-
-    public void Tutorial()
-    {
-        SceneManager.LoadScene("Tutorial");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 }
