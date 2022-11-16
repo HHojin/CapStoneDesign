@@ -84,7 +84,7 @@ public class SaveLoad : MonoBehaviour
         ps.transform.GetChild(0).GetComponent<Move>().MoveStop();//이동 멈추기
     }
 
-    public void LoadScene() //메인화면에서 이어하기 선택할 시 사용 후 LoadData함수 호출 
+    public void LoadScene() //메인화면에서 이어하기 선택할 시 이 함수 사용 후 LoadData함수 호출 
     {
         SceneManager.LoadScene(saveData.SceneNumber);
     }

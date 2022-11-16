@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStat : MonoBehaviour
 {
     public Stat MaxHP;
-    public float Current_HP;
+    public float Current_HP { get; set; }
     public float Move_speed;
     public Stat Attack_power;
     public Stat Stealth;
