@@ -25,5 +25,13 @@ https://beatchoi.github.io/unity3d/fundamentals/2021/07/30/CharacterStats/ // st
 // free assests
 https://assetstore.unity.com/packages/2d/gui/icons/free-ui-pack-170878 //UI 관련
 https://fonts.google.com/icons //UI Icon
+https://assetstore.unity.com/packages/3d/environments/urban/uk-terraced-houses-pack-free-63481
+유료
+https://assetstore.unity.com/packages/3d/environments/urban/subway-environment-16741#content
+- $12.99
+https://assetstore.unity.com/packages/3d/characters/zombie-slaughter-119817
+- $9.99
+
+
 
 https://assetstore.unity.com/packages/vfx/particles/3d-games-effects-pack-free-42285
