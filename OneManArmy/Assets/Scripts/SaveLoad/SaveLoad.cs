@@ -51,6 +51,7 @@ public class SaveLoad : MonoBehaviour
     public void SaveData()
     {  //시간이 남으면 플레이어 스탯을 다른 클래스로 분할시켜 하드코딩요소 제거..
 
+        ps = GameObject.FindObjectOfType<PlayerStat>();
         saveData.MaxHP = ps.MaxHP.GetStat();
         saveData.Current_HP = ps.Current_HP;
         saveData.Move_speed = ps.Move_speed;
