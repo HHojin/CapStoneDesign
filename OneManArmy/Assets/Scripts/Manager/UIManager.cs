@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     public Text hpText;
     public Image hpBar;
     public Image curHpBar;
+    public Image hitBloodScreen;
 
     [Header("Stat UI")]
     public GameObject statUI;
@@ -174,6 +175,7 @@ public class UIManager : MonoBehaviour
 
         curHpBar.fillAmount = hp / player.GetComponent<PlayerStat>().MaxHP.GetStat();
         StartCoroutine(UpdateHpBar());
+        UpdateHitScreen();
     }
 
     IEnumerator UpdateHpBar()
@@ -184,6 +186,17 @@ public class UIManager : MonoBehaviour
             if (hpBar.fillAmount != curHpBar.fillAmount)
                 hpBar.fillAmount = Mathf.Lerp(hpBar.fillAmount, curHpBar.fillAmount, Time.deltaTime * 2.0f);
         }
+    }
+
+    public void UpdateHitScreen()
+    {
+        // 피격시 screen blood 효과
+        Color color = hitBloodScreen.color;
+
+        color.a = (player.GetComponent<PlayerStat>().MaxHP.GetStat() - player.GetComponent<PlayerStat>().Current_HP) /
+            player.GetComponent<PlayerStat>().MaxHP.GetStat();
+
+        hitBloodScreen.color = color;
     }
 
     public void UpdatePlayerStatText()
