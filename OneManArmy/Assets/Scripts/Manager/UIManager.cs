@@ -54,6 +54,16 @@ public class UIManager : MonoBehaviour
     [Header("GameOver UI")]
     public GameObject gameoverUI;
 
+    [Header("Scene Change Panel")]
+    public Image scenePanel;
+    private float time = 0.0f;
+    private float F_time = 2f;
+
+    [Header("Tutorial")]
+    public GameObject tutorial;
+    public GameObject tutorialText;
+
+
     public void ActiveStatUI(bool active)
     {
         if (active == true)
@@ -201,13 +211,50 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    public void Tutorial()
+    public void StartGame()
     {
-        SceneManager.LoadScene("Tutorial");
+        StartCoroutine(FadeOut());
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator FadeIn()
+    {
+        Color alpha = scenePanel.color;
+        while (alpha.a > 0f)
+        {
+            time += Time.deltaTime / F_time;
+            alpha.a = Mathf.Lerp(1, 0, time);
+            scenePanel.color = alpha;
+            yield return null;
+        }
+        time = 0.0f;
+    }
+
+    IEnumerator FadeOut()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        Color alpha = scenePanel.color;
+        while (alpha.a < 1f)
+        {
+            time += Time.deltaTime / F_time;
+            alpha.a = Mathf.Lerp(0, 1, time);
+            scenePanel.color = alpha;
+            yield return null;
+        }
+        yield return new WaitForSeconds(1.5f);
+        time = 0.0f;
+
+        if (scene.name == "Main Menu")
+        {
+            tutorial.SetActive(true);
+            tutorialText.SetActive(true);
+            yield return new WaitForSeconds(5.0f);
+
+            SceneManager.LoadScene("Game");
+        }
     }
 }
