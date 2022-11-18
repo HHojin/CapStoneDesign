@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dodge : MonoBehaviour
 {
     private bool canDodge = true;
-    public GameObject hit_zone;
+    public CapsuleCollider hit_zone;
     private Vector3 dodgeVector;
 
     void Update()
@@ -20,7 +20,7 @@ public class Dodge : MonoBehaviour
         canDodge = false;
         GetComponent<Move>().agent.isStopped = true; //이동 중지
         GetComponent<Move>().agent.ResetPath();
-        hit_zone.GetComponent<CapsuleCollider>().enabled = false; //데미지 무시
+        hit_zone.enabled = false; //데미지 무시
 
         dodgeVector = GetComponent<Move>().MovePointReturn(Camera.main.ScreenPointToRay(Input.mousePosition));
         this.transform.LookAt(dodgeVector);
@@ -35,6 +35,7 @@ public class Dodge : MonoBehaviour
     {
         while (true)
         {
+            yield return null;
             if (GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash !=
             Animator.StringToHash("Base Layer.Dodge"))
             {
@@ -45,7 +46,7 @@ public class Dodge : MonoBehaviour
                 break;
             }
         }
-        yield return null;
+       
     }
     
 }

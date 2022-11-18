@@ -31,6 +31,7 @@ public class SaveLoad : MonoBehaviour
         ps = GameObject.FindObjectOfType<PlayerStat>();
         saveData = new Data_set();
         path = Application.persistentDataPath + "/"; //유니티 기본경로 // C:\Users\----\AppData\LocalLow\DefaultCompany\...
+       
     }
     //test Code 입니다. 테스트 이후 삭제
     void Update()
@@ -65,6 +66,7 @@ public class SaveLoad : MonoBehaviour
 
         SLdata = JsonUtility.ToJson(saveData);
         File.WriteAllText(path + FILENAME, SLdata);// 이부분은 파일 저장 
+        Debug.Log(path + FILENAME);
     }
     public void LoadData()
     {
@@ -88,6 +90,15 @@ public class SaveLoad : MonoBehaviour
     public void LoadScene() //메인화면에서 이어하기 선택할 시 이 함수 사용 후 LoadData함수 호출 
     {
         SceneManager.LoadScene(saveData.SceneNumber);
+    }
+    public void NextScene()
+    {
+        SaveData();
+        saveData.SceneNumber++;
+
+        LoadScene();
+        LoadData();
+
     }
 
 }
