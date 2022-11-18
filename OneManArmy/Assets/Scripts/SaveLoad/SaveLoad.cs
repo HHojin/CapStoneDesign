@@ -30,7 +30,7 @@ public class SaveLoad : MonoBehaviour
     {
         ps = GameObject.FindObjectOfType<PlayerStat>();
         saveData = new Data_set();
-        path = Application.persistentDataPath; //유니티 기본경로 // C:\Users\----\AppData\LocalLow\DefaultCompany\...
+        path = Application.persistentDataPath + "/"; //유니티 기본경로 // C:\Users\----\AppData\LocalLow\DefaultCompany\...
        
     }
     //test Code 입니다. 테스트 이후 삭제
@@ -40,12 +40,9 @@ public class SaveLoad : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1)) //savePoint랑 만나면 Save, Load 버튼을 누르면 Load
         {
             SaveData();
-            
-            
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            
+        { 
             LoadData();//이부분은 파일 읽기 + 적용 
         }
     }

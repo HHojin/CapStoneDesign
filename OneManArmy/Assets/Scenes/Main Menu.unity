@@ -276,6 +276,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91073514}
   m_CullTransparentMesh: 1
+--- !u!114 &167246095 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5851563854238280231, guid: 61217c21a6f5ee640b62fc957031743b, type: 3}
+  m_PrefabInstance: {fileID: 1214759596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060cfee5ccc2d784e8ed7e90dc39013b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &170628170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1072,7 +1083,7 @@ PrefabInstance:
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 167246095}
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1087,7 +1098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -3158,23 +3169,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: d2ddb32b07f3e424999056a081f5e1d8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b05063f5c03c7c849977c55a5209adba, type: 3}
---- !u!1 &1910966162 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5851563854238280280, guid: 61217c21a6f5ee640b62fc957031743b, type: 3}
-  m_PrefabInstance: {fileID: 1214759596}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1910966165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910966162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fbcb1ebf00a5fc41a96450fc19ad796, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1994617128
 GameObject:
   m_ObjectHideFlags: 0

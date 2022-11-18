@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Continue : MonoBehaviour
 {
-    public void start() 
+     void Start() 
     {
         SaveLoad.instance.LoadData();
 
     }
-
-
 }
