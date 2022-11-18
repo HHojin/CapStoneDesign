@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStat : MonoBehaviour
 {
@@ -23,8 +24,13 @@ public class PlayerStat : MonoBehaviour
         Attack_power.SetStat(25);
         Armor.SetStat(0);
         Stealth.SetStat(100);
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            SaveLoad.instance.NextScene();
+        }
+        
     }
- 
+
     public void TakeDamage(int damage)
     {
         Current_HP -= (damage - Armor.GetStat());

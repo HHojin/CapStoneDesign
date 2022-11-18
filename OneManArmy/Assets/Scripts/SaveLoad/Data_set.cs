@@ -27,7 +27,7 @@ using UnityEngine;
         Armor = 0;
         EXP = 0;
         Level = 0;
-        SceneNumber = 0;
+        SceneNumber = 1;
        Pos = Vector3.zero;
     }
    

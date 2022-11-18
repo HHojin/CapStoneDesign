@@ -30,7 +30,7 @@ public class SaveLoad : MonoBehaviour
     {
         ps = GameObject.FindObjectOfType<PlayerStat>();
         saveData = new Data_set();
-        path = Application.persistentDataPath + "/"; //유니티 기본경로 // C:\Users\----\AppData\LocalLow\DefaultCompany\...
+        path = Application.persistentDataPath; //유니티 기본경로 // C:\Users\----\AppData\LocalLow\DefaultCompany\...
        
     }
     //test Code 입니다. 테스트 이후 삭제
@@ -89,15 +89,32 @@ public class SaveLoad : MonoBehaviour
 
     public void LoadScene() //메인화면에서 이어하기 선택할 시 이 함수 사용 후 LoadData함수 호출 
     {
-        SceneManager.LoadScene(saveData.SceneNumber);
+        SLdata = File.ReadAllText(path + FILENAME);
+        Data_set Load = JsonUtility.FromJson<Data_set>(SLdata);
+
+        SceneManager.LoadScene(Load.SceneNumber);
     }
     public void NextScene()
     {
-        SaveData();
-        saveData.SceneNumber++;
+        SLdata = File.ReadAllText(path + FILENAME);
+        Data_set Load = JsonUtility.FromJson<Data_set>(SLdata); // 읽어오는 부분 
 
-        LoadScene();
-        LoadData();
+       
+        //Player 찾아서 Stat 변경 
+        ps = GameObject.FindObjectOfType<PlayerStat>();
+        ps.MaxHP.SetStat(Load.MaxHP);
+        ps.Current_HP = Load.Current_HP;
+        ps.Move_speed = Load.Move_speed;
+        ps.Attack_power.SetStat(Load.Attack_power);
+        ps.Stealth.SetStat(Load.Stealth);
+        ps.Armor.SetStat(Load.Armor);
+        ps.EXP = Load.EXP;
+        ps.Level = Load.Level;
+      
+
+
+        ps.transform.GetChild(0).GetComponent<Move>().MoveStop();//이동 멈추기
+
 
     }
 

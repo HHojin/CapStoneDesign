@@ -5592,29 +5592,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2091595673248290017, guid: 38b69cf3c65cab14e85bf849d36ffdec, type: 3}
   m_PrefabInstance: {fileID: 382352509}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1372022916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372022914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: addcb78a0b595644385d7a863e9c9b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHP:
-    baseStat: 0
-  Move_speed: 50
-  Attack_power:
-    baseStat: 0
-  Stealth:
-    baseStat: 100
-  Armor:
-    baseStat: 0
-  EXP: 0
-  Level: 1
 --- !u!1 &1387812764
 GameObject:
   m_ObjectHideFlags: 0
@@ -6284,6 +6261,7 @@ MonoBehaviour:
   hpText: {fileID: 1186749875}
   hpBar: {fileID: 625526559}
   curHpBar: {fileID: 1862910775}
+  hitBloodScreen: {fileID: 0}
   statUI: {fileID: 267053348}
   statText: {fileID: 241611116}
   statPointText: {fileID: 1387812767}
@@ -6316,6 +6294,9 @@ MonoBehaviour:
   - {fileID: 1299553340}
   - {fileID: 1967610414}
   gameoverUI: {fileID: 47161154}
+  scenePanel: {fileID: 0}
+  tutorial: {fileID: 0}
+  tutorialText: {fileID: 0}
 --- !u!114 &1488436318
 MonoBehaviour:
   m_ObjectHideFlags: 0

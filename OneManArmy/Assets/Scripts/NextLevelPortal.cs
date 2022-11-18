@@ -8,8 +8,9 @@ public class NextLevelPortal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SaveLoad.instance.NextScene ();
-            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+
         }
             
         
