@@ -28,6 +28,7 @@ public class PlayerStat : MonoBehaviour
         {
             SaveLoad.instance.NextScene();
         }
+    
         
     }
 

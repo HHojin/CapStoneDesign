@@ -111,8 +111,15 @@ public class SaveLoad : MonoBehaviour
 
 
         ps.transform.GetChild(0).GetComponent<Move>().MoveStop();//이동 멈추기
-
-
     }
+    public void InitData()
+    {
+        saveData =  new Data_set();
+        SLdata = JsonUtility.ToJson(saveData);
+        File.WriteAllText(path + FILENAME, SLdata);// 이부분은 파일 저장 
+        Debug.Log(path + FILENAME);
+    }
+
+
 
 }
