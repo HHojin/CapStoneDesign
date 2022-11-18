@@ -54,8 +54,8 @@ public class Move : MonoBehaviour
     // 추후 기능관리, 유지보수 용이 하도록 변경
     void Move_to(Vector3 movePoint)
     {
-        if (GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash !=
-            Animator.StringToHash("Base Layer.DefaultAttack"))
+        if (GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash != Animator.StringToHash("Base Layer.DefaultAttack") &&
+            GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash != Animator.StringToHash("Base Layer.Dodge"))
         {
             //Debug.Log("set destination");
             agent.SetDestination(movePoint);

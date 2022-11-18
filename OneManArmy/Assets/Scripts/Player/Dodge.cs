@@ -35,7 +35,6 @@ public class Dodge : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1.0f);
             if (GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash !=
             Animator.StringToHash("Base Layer.Dodge"))
             {
@@ -46,6 +45,7 @@ public class Dodge : MonoBehaviour
                 break;
             }
         }
+        yield return null;
     }
     
 }

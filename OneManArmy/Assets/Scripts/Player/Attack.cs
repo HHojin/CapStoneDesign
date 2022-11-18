@@ -30,8 +30,8 @@ public class Attack : MonoBehaviour
 
     void defaultAttack() 
     {
-        if (GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash !=
-            Animator.StringToHash("Base Layer.DefaultAttack"))
+        if (GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash != Animator.StringToHash("Base Layer.DefaultAttack") &&
+            GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash != Animator.StringToHash("Base Layer.Dodge"))
         {
             this.transform.LookAt(AttackLookatPoint());//마우스 포인터가 있는곳을 향한다
             Hit_zone.enabled = true;//공격판정 on 
