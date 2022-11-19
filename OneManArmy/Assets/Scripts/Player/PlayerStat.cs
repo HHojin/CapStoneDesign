@@ -24,12 +24,6 @@ public class PlayerStat : MonoBehaviour
         Attack_power.SetStat(25);
         Armor.SetStat(0);
         Stealth.SetStat(100);
-        if (SceneManager.GetActiveScene().buildIndex != 1)
-        {
-            SaveLoad.instance.NextScene();
-        }
-    
-        
     }
 
     public void TakeDamage(int damage)
@@ -38,16 +32,19 @@ public class PlayerStat : MonoBehaviour
         UIManager.instance.UpdateHp((int)Current_HP);
         damageCheck();
     }
+
     void damageCheck()
     {
         if (Current_HP <= 0)
         {
             this.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = false;
+
             //사망이벤트, 게임오버 씬으로 이동
             this.transform.GetChild(0).GetComponent<AnimationControl>().DeathAnim();
             GameManager.instance.GameOver();
         }
     }
+
     public void EXPcheck()
     {
         Debug.LogWarning("EXPcheck");
@@ -58,10 +55,10 @@ public class PlayerStat : MonoBehaviour
             this.EXP = 0;
             //UI/UX
             GameManager.instance.LevelUP();
-            SaveLoad.instance.SaveData();
         }
         TraceTriggerUpdate();
     }
+
     public void TraceTriggerUpdate()
     {
         this.GetComponentInChildren<Enemy_TraceControl>().TriggerSizeUpdate();

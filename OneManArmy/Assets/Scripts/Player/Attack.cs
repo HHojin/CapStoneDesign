@@ -5,12 +5,6 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public BoxCollider Hit_zone;
-   
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -31,7 +25,8 @@ public class Attack : MonoBehaviour
     void defaultAttack() 
     {
         if (GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash != Animator.StringToHash("Base Layer.DefaultAttack") &&
-            GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash != Animator.StringToHash("Base Layer.Dodge"))
+            GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash != Animator.StringToHash("Base Layer.Dodge") &&
+            GetComponent<AnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash != Animator.StringToHash("Base Layer.Death"))
         {
             this.transform.LookAt(AttackLookatPoint());//마우스 포인터가 있는곳을 향한다
             Hit_zone.enabled = true;//공격판정 on 

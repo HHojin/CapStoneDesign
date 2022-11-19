@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        isGameOver = false;
     }
 
     public void LevelUP()

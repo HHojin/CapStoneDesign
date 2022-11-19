@@ -10,7 +10,7 @@ public class Dodge : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canDodge)
+        if (Input.GetKeyDown(KeyCode.Space) && canDodge && !GameManager.instance.isGameOver)
         {
             dodging();
         }

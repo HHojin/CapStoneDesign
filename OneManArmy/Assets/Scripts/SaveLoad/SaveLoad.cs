@@ -6,37 +6,42 @@ using System.IO;
 
 public class SaveLoad : MonoBehaviour
 {
-
-    //메인메뉴에 심어주기
     public static SaveLoad instance;
+
     PlayerStat ps;
     Data_set saveData;
     string SLdata; // save Load data
     string path; // 경로
     const string FILENAME = "SaveFile.json";
    
-
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+        }
+        else
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
 
         //다른 씬에서도 사용 가능하도록 유지, 필요없을시 삭제  
         //메인화면에서는 Load 기능만, Data_set을 static으로 안 하는 방식사용
         DontDestroyOnLoad(this.gameObject);
         
     }
+
     private void Start()
     {
         ps = GameObject.FindObjectOfType<PlayerStat>();
         saveData = new Data_set();
-        path = Application.persistentDataPath + "/"; //유니티 기본경로 // C:\Users\----\AppData\LocalLow\DefaultCompany\...
-       
+        path = Application.persistentDataPath + "/"; //유니티 기본경로 // C:\Users\----\AppData\LocalLow\DefaultCompany\... 
     }
+
     //test Code 입니다. 테스트 이후 삭제
     void Update()
     {
-       
         if (Input.GetKeyDown(KeyCode.Alpha1)) //savePoint랑 만나면 Save, Load 버튼을 누르면 Load
         {
             SaveData();
@@ -46,9 +51,9 @@ public class SaveLoad : MonoBehaviour
             LoadData();//이부분은 파일 읽기 + 적용 
         }
     }
+
     public void SaveData()
     {  //시간이 남으면 플레이어 스탯을 다른 클래스로 분할시켜 하드코딩요소 제거..
-
         ps = GameObject.FindObjectOfType<PlayerStat>();
         saveData.MaxHP = ps.MaxHP.GetStat();
         saveData.Current_HP = ps.Current_HP;
@@ -63,12 +68,15 @@ public class SaveLoad : MonoBehaviour
 
         SLdata = JsonUtility.ToJson(saveData);
         File.WriteAllText(path + FILENAME, SLdata);// 이부분은 파일 저장 
-        Debug.Log(path + FILENAME);
     }
+
     public void LoadData()
     {
         SLdata = File.ReadAllText(path + FILENAME);
-        Data_set Load = JsonUtility.FromJson<Data_set>(SLdata); // 읽어오는 부분 
+        Data_set Load = JsonUtility.FromJson<Data_set>(SLdata); // 읽어오는 부분
+
+        if (Load.MaxHP == 0)
+            return;
 
         //Player 찾아서 Stat 변경 
         ps = GameObject.FindObjectOfType<PlayerStat>();
@@ -82,6 +90,10 @@ public class SaveLoad : MonoBehaviour
         ps.Level = Load.Level;
         ps.transform.GetChild(0).position = Load.Pos;//!!!
         ps.transform.GetChild(0).GetComponent<Move>().MoveStop();//이동 멈추기
+
+        UIManager.instance.UpdateHp(ps.Current_HP); // UI 업데이트
+
+        Debug.Log(path);
     }
 
     public void LoadScene() //메인화면에서 이어하기 선택할 시 이 함수 사용 후 LoadData함수 호출 
@@ -91,12 +103,13 @@ public class SaveLoad : MonoBehaviour
 
         SceneManager.LoadScene(Load.SceneNumber);
     }
+
+    /*
     public void NextScene()
     {
         SLdata = File.ReadAllText(path + FILENAME);
         Data_set Load = JsonUtility.FromJson<Data_set>(SLdata); // 읽어오는 부분 
 
-       
         //Player 찾아서 Stat 변경 
         ps = GameObject.FindObjectOfType<PlayerStat>();
         ps.MaxHP.SetStat(Load.MaxHP);
@@ -108,16 +121,15 @@ public class SaveLoad : MonoBehaviour
         ps.EXP = Load.EXP;
         ps.Level = Load.Level;
       
-
-
         ps.transform.GetChild(0).GetComponent<Move>().MoveStop();//이동 멈추기
     }
-    public void InitData()
+    */
+
+    public void InitData() //메인에서 start시 세이브데이터 초기화
     {
-        saveData =  new Data_set();
+        saveData = new Data_set();
         SLdata = JsonUtility.ToJson(saveData);
-        File.WriteAllText(path + FILENAME, SLdata);// 이부분은 파일 저장 
-        Debug.Log(path + FILENAME);
+        File.WriteAllText(path + FILENAME, SLdata);
     }
 
 

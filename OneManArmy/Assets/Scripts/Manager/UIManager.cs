@@ -83,7 +83,10 @@ public class UIManager : MonoBehaviour
                 UpdateHp(player.GetComponent<PlayerStat>().Current_HP);
 
                 player.GetComponent<PlayerStat>().Attack_power.SetStat(player.GetComponent<PlayerStat>().Attack_power.GetStat() + tmpStatAmount[1, 0]);
+
                 player.GetComponent<PlayerStat>().Stealth.SetStat(player.GetComponent<PlayerStat>().Stealth.GetStat() - tmpStatAmount[2, 0]);
+                player.GetComponent<PlayerStat>().TraceTriggerUpdate();
+
                 player.GetComponent<PlayerStat>().Armor.SetStat(player.GetComponent<PlayerStat>().Armor.GetStat() + tmpStatAmount[3, 0]);
 
                 for (int i = 0; i < 4; i++)
@@ -94,8 +97,10 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 1.0f;
                 UpdateStatIcon(Green);
                 ResetStatPoint();
-                player.GetComponent<PlayerStat>().TraceTriggerUpdate();
+
                 statUI.SetActive(active);
+
+                SaveLoad.instance.SaveData();  // 스탯 분배후 세이브
             }
             else
             {
@@ -192,9 +197,21 @@ public class UIManager : MonoBehaviour
     {
         // 피격시 screen blood 효과
         Color color = hitBloodScreen.color;
-
-        color.a = (player.GetComponent<PlayerStat>().MaxHP.GetStat() - player.GetComponent<PlayerStat>().Current_HP) /
+        float colorPercent = (player.GetComponent<PlayerStat>().MaxHP.GetStat() - player.GetComponent<PlayerStat>().Current_HP) /
             player.GetComponent<PlayerStat>().MaxHP.GetStat();
+
+        if(colorPercent < 0.3f)
+        {
+            color.a = 0f;
+        }
+        else if(colorPercent < 0.6f)
+        {
+            color.a = 0.3f;
+        }
+        else
+        {
+            color.a = 0.6f;
+        }
 
         hitBloodScreen.color = color;
     }
@@ -221,7 +238,9 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SaveLoad.instance.LoadData();
+        GameManager.instance.isGameOver = false;
     }
 
     public void StartGame()
