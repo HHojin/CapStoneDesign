@@ -28,6 +28,9 @@ https://fonts.google.com/icons //UI Icon
 https://www.flaticon.com/kr/free-icon/right-click-of-the-mouse_31532# //Main Menu Click Icon
 https://assetstore.unity.com/packages/vfx/particles/3d-games-effects-pack-free-42285//Next Level Portal
 https://assetstore.unity.com/packages/3d/environments/urban/uk-terraced-houses-pack-free-63481 // Maze 
+https://assetstore.unity.com/packages/3d/props/exterior/old-plastic-barrier-182509 // 
+https://assetstore.unity.com/packages/audio/sound-fx/retro-sci-fi-pack-61781
+
 유료
 https://assetstore.unity.com/packages/3d/environments/urban/subway-environment-16741#content
 - $12.99

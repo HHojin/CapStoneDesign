@@ -20,7 +20,7 @@ public class PlayerStat : MonoBehaviour
     {
         MaxHP.SetStat(100);
         Current_HP = MaxHP.GetStat();
-        Move_speed = 3.5f;
+        Move_speed = 5.0f;
         Attack_power.SetStat(25);
         Armor.SetStat(0);
         Stealth.SetStat(100);

@@ -7,10 +7,10 @@ public class EnemyStat : MonoBehaviour
 {
     public Stat MaxHP;
     public float Currnet_HP { get; set; }
-    public float Move_speed = 5.0f;
+    public float Move_speed;
     public Stat Attack_power;
     public float EXP = 10; //사망시 플레이어에게 주는 EXP
-    public GameObject[] bodyParts;
+    public GameObject[] bodyParts; //?
 
     public Transform player;
     PlayerStat player_stat;
@@ -22,9 +22,11 @@ public class EnemyStat : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform.parent;
         MaxHP.SetStat(100);
         Currnet_HP = MaxHP.GetStat();
         Attack_power.SetStat(15);
+        Move_speed = 4.7f;
         player_stat = player.GetComponent<PlayerStat>();
     }
 
