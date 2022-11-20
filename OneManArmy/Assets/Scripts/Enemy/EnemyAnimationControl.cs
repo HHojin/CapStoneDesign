@@ -35,4 +35,9 @@ public class EnemyAnimationControl : MonoBehaviour
     {
         this.transform.LookAt(GetComponent<Enemy_move>().GOplayer.transform); // 공격시 플레이어 바라봄
     }
+
+    public void ReStart()
+    {
+        animator.SetTrigger("ReStart");
+    }
 }

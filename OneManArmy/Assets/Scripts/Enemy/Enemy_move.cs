@@ -15,8 +15,7 @@ public class Enemy_move : MonoBehaviour
     private void Awake()
     {
         stat = GetComponent<EnemyStat>();
-        GOplayer = GameObject.FindWithTag("Player");
-      
+        GOplayer = GameObject.FindWithTag("Player");   
     }
 
     // Start is called before the first frame update
@@ -46,5 +45,10 @@ public class Enemy_move : MonoBehaviour
             }
         }
 
+        if(GameManager.instance.isGameOver == true)
+        {
+            NVagent.ResetPath();
+            this.GetComponent<EnemyAnimationControl>().ReStart();
+        }
     }
 }

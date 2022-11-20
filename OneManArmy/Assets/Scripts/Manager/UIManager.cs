@@ -19,6 +19,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            DontDestroyOnLoad(gameObject);
+    }
+
     private static UIManager m_instance;
 
     public GameObject player;
@@ -47,7 +53,7 @@ public class UIManager : MonoBehaviour
 
 
     private int statPoint = 3;
-    private int curStatPoint = 3;
+    private int curStatPoint = 0;
     private string statType;
     private int[,] tmpStatAmount = new int[,] { { 0, 10 }, { 0, 2 }, { 0, 5 }, { 0, 2 } };
     // {{health,health증가율}, {damage,damage증가율},{stealth,stealth증가율},{armor,armor증가율}}
@@ -63,7 +69,6 @@ public class UIManager : MonoBehaviour
     [Header("Tutorial")]
     public GameObject tutorial;
     public GameObject tutorialText;
-
 
     public void ActiveStatUI(bool active)
     {
@@ -238,9 +243,11 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SaveLoad.instance.LoadData();
-        GameManager.instance.isGameOver = false;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        UpdateGameoverUI(false);
+        GameManager.instance.ReStart();
+
+        player.transform.GetChild(0).GetComponent<AnimationControl>().RestartAnim();
     }
 
     public void StartGame()
@@ -250,6 +257,7 @@ public class UIManager : MonoBehaviour
 
     public void QuitGame()
     {
+        SaveLoad.instance.DeleteData();
         Application.Quit();
     }
 

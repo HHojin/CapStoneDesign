@@ -60,10 +60,10 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 1
-        functionName: StopAnim
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: da7e496d5da5ef140a1942f5e05b423a, type: 3}
+      - time: 0.012987013
+        functionName: PlaySound
+        data: Death
+        objectReferenceParameter: {fileID: 11500000, guid: 6a5d386e2c945dd46a334c3d051e99e9, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

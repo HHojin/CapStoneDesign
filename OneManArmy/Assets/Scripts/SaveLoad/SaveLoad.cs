@@ -132,6 +132,10 @@ public class SaveLoad : MonoBehaviour
         File.WriteAllText(path + FILENAME, SLdata);
     }
 
+    public void DeleteData()
+    {
+        System.IO.File.Delete(path + FILENAME);
+    }
 
 
 }

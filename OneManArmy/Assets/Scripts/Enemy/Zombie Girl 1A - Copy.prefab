@@ -1080,18 +1080,8 @@ MonoBehaviour:
   Attack_power:
     baseStat: 0
   EXP: 100
-  bodyParts:
-  - {fileID: 5192807586969500275}
-  - {fileID: 5193540036702469961}
-  - {fileID: 5192863858291015247}
-  - {fileID: 5193261518444445599}
-  - {fileID: 5193430734727465933}
-  - {fileID: 5192904723051381451}
-  - {fileID: 5192768920729385135}
-  - {fileID: 5192883399356381781}
-  - {fileID: 5193710290304520501}
-  - {fileID: 5193673512434712665}
-  - {fileID: 5193333788310758191}
+  Pos: {x: 0, y: 0, z: 0}
+  btnRestart: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &5193027594539216563
 GameObject:

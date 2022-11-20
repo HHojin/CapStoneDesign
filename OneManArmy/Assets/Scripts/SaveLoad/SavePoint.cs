@@ -7,10 +7,8 @@ public class SavePoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-        {
-            
+        {      
             SaveLoad.instance.SaveData();
         }
-
     }
 }

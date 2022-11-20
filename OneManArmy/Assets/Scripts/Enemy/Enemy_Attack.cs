@@ -10,8 +10,7 @@ public class Enemy_Attack: MonoBehaviour
 
     void Start()
     {
-        parent = this.transform.parent;
-       
+        parent = this.transform.parent;   
     }
 
     private void OnTriggerEnter(Collider other) 

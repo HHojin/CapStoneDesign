@@ -10,7 +10,7 @@ public class EnemyStat : MonoBehaviour
     public float Move_speed;
     public Stat Attack_power;
     public float EXP = 10; //사망시 플레이어에게 주는 EXP
-    public GameObject[] bodyParts; //?
+    public Vector3 Pos;
 
     public Transform player;
     PlayerStat player_stat;
@@ -27,6 +27,8 @@ public class EnemyStat : MonoBehaviour
         Currnet_HP = MaxHP.GetStat();
         Attack_power.SetStat(15);
         Move_speed = 4.7f;
+        Pos = this.transform.position;
+
         player_stat = player.GetComponent<PlayerStat>();
     }
 
@@ -55,6 +57,11 @@ public class EnemyStat : MonoBehaviour
     {
         //사망 애니메이션 작동 후 
         Destroy(this.gameObject, 2.0f);//2초뒤 제거
+    }
+
+    public void ResetPosition() // 게임 재시작시 원래 위치로 이동
+    {
+        this.transform.position = Pos;
     }
 
 }

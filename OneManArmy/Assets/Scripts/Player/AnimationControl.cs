@@ -28,6 +28,12 @@ public class AnimationControl : MonoBehaviour
 
     public void StopAnim()
     {
-        animator.speed = 0.0f;
+        animator.speed = 1.0f;
+    }
+
+    public void RestartAnim()
+    {
+        //animator.speed = 1.0f;
+        animator.SetTrigger("Restart");
     }
 }

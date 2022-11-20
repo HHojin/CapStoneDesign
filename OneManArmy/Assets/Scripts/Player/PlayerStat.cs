@@ -14,8 +14,6 @@ public class PlayerStat : MonoBehaviour
     public float EXP = 0;
     public int Level = 1;
 
-
-
     private void Awake()
     {
         MaxHP.SetStat(100);

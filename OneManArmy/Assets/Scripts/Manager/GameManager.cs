@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     }
 
     private static GameManager m_instance;
+    public GameObject player;
+    public GameObject[] enemies;
 
     public bool isGameOver { get; set; }
 
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        player = GameObject.FindGameObjectWithTag("Player");
         isGameOver = false;
     }
 
@@ -40,5 +43,19 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         UIManager.instance.UpdateGameoverUI(true);
+    }
+
+    public void ReStart()
+    {
+        isGameOver = false;
+        SaveLoad.instance.LoadData();
+        player.transform.GetComponent<CapsuleCollider>().enabled = true;
+
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.transform.GetComponent<EnemyStat>().ResetPosition();
+        }
     }
 }
