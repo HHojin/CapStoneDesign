@@ -31,6 +31,8 @@ https://assetstore.unity.com/packages/3d/environments/urban/uk-terraced-houses-p
 https://assetstore.unity.com/packages/3d/props/exterior/old-plastic-barrier-182509 // 
 https://assetstore.unity.com/packages/audio/sound-fx/retro-sci-fi-pack-61781
 https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116 // SFX pack
+https://opengameart.org/ // Sound Effect
+https://www.turbosquid.com/3d-models/3d-model-crowbar-lowpoly-pbr-free-1864881 // Player Weapon
 https://pgtd.tistory.com/200 // 
 
 유료
