@@ -104,27 +104,6 @@ public class SaveLoad : MonoBehaviour
         SceneManager.LoadScene(Load.SceneNumber);
     }
 
-    /*
-    public void NextScene()
-    {
-        SLdata = File.ReadAllText(path + FILENAME);
-        Data_set Load = JsonUtility.FromJson<Data_set>(SLdata); // 읽어오는 부분 
-
-        //Player 찾아서 Stat 변경 
-        ps = GameObject.FindObjectOfType<PlayerStat>();
-        ps.MaxHP.SetStat(Load.MaxHP);
-        ps.Current_HP = Load.Current_HP;
-        ps.Move_speed = Load.Move_speed;
-        ps.Attack_power.SetStat(Load.Attack_power);
-        ps.Stealth.SetStat(Load.Stealth);
-        ps.Armor.SetStat(Load.Armor);
-        ps.EXP = Load.EXP;
-        ps.Level = Load.Level;
-      
-        ps.transform.GetChild(0).GetComponent<Move>().MoveStop();//이동 멈추기
-    }
-    */
-
     public void InitData() //메인에서 start시 세이브데이터 초기화
     {
         saveData = new Data_set();
@@ -136,6 +115,4 @@ public class SaveLoad : MonoBehaviour
     {
         System.IO.File.Delete(path + FILENAME);
     }
-
-
 }

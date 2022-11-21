@@ -7,5 +7,6 @@ public class Continue : MonoBehaviour
     void Start()
     {
         SaveLoad.instance.LoadData();
+        SaveLoad.instance.SaveData();
     }
 }

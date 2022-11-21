@@ -19,12 +19,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void Awake()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-            DontDestroyOnLoad(gameObject);
-    }
-
     private static UIManager m_instance;
 
     public GameObject player;
@@ -297,7 +291,7 @@ public class UIManager : MonoBehaviour
             tutorialText.SetActive(true);
             yield return new WaitForSeconds(5.0f);
 
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("SubWay");
         }
         else if(scene.name == "Maze")
         {
