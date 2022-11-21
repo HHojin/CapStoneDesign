@@ -236,6 +236,11 @@ public class UIManager : MonoBehaviour
         gameoverUI.SetActive(active);
     }
 
+    public void UpdateGameWinUI()
+    {
+        StartCoroutine(FadeOut());
+    }
+
     public void MainMenu()
     {
         SceneManager.LoadScene("Main Menu");
@@ -243,7 +248,6 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         UpdateGameoverUI(false);
         GameManager.instance.ReStart();
 
@@ -257,7 +261,6 @@ public class UIManager : MonoBehaviour
 
     public void QuitGame()
     {
-        SaveLoad.instance.DeleteData();
         Application.Quit();
     }
 
@@ -295,6 +298,10 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(5.0f);
 
             SceneManager.LoadScene("Game");
+        }
+        else if(scene.name == "Maze")
+        {
+            SceneManager.LoadScene("Ending");
         }
     }
 }

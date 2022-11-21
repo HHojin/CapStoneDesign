@@ -8,12 +8,14 @@ public class NextLevelPortal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-
-        }
-            
-        
+            if (SceneManager.GetActiveScene().buildIndex == 2) // win
+            {
+                GameManager.instance.GameWin();
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+        }   
     }
-
 }

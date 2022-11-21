@@ -39,6 +39,19 @@ public class GameManager : MonoBehaviour
         UIManager.instance.ActiveStatUI(true);
     }
 
+    public void GameWin()
+    {
+        UIManager.instance.UpdateGameWinUI();
+        SaveLoad.instance.DeleteData();
+
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.transform.GetComponent<EnemyStat>().EnemyDeath();
+        }
+    }
+
     public void GameOver()
     {
         isGameOver = true;

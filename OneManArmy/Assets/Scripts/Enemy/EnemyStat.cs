@@ -48,14 +48,15 @@ public class EnemyStat : MonoBehaviour
             //EXP 체크 이후 레벨상승 시 발생 이벤트 
             player_stat.EXPcheck();
             // Debug.LogError("적 사망");
-            GetComponent<EnemyAnimationControl>().DeathAnim();
+
             EnemyDeath();
         }
     }
 
-    private void EnemyDeath()
+    public void EnemyDeath()
     {
         //사망 애니메이션 작동 후 
+        GetComponent<EnemyAnimationControl>().DeathAnim();
         Destroy(this.gameObject, 2.0f);//2초뒤 제거
     }
 
