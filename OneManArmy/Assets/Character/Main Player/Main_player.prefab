@@ -1941,6 +1941,7 @@ GameObject:
   - component: {fileID: 8657726015132846175}
   - component: {fileID: 4178752111812549443}
   - component: {fileID: 8770293031479327266}
+  - component: {fileID: 4968762977539658212}
   m_Layer: 0
   m_Name: Crowbar
   m_TagString: Untagged
@@ -2013,6 +2014,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4968762977539658212
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4901253142190115544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8918077550557095614, guid: ef00a49d6e127f64fb6552f932916576, type: 3}
 --- !u!1 &4934463803712121754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3616,7 +3631,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8838999455872389279}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25ebc93fe6f52484cb9c0c4e9161db8d, type: 3}
   m_Name: 
