@@ -2038,7 +2038,7 @@ PrefabInstance:
     - target: {fileID: 218062114971697894, guid: 38b69cf3c65cab14e85bf849d36ffdec, type: 3}
       propertyPath: hit_zone
       value: 
-      objectReference: {fileID: 402460063}
+      objectReference: {fileID: 382352510}
     - target: {fileID: 732005957393176803, guid: 38b69cf3c65cab14e85bf849d36ffdec, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2149,6 +2149,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38b69cf3c65cab14e85bf849d36ffdec, type: 3}
+--- !u!136 &382352510 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 1791012427837479937, guid: 38b69cf3c65cab14e85bf849d36ffdec, type: 3}
+  m_PrefabInstance: {fileID: 382352509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &394515065
 PrefabInstance:
   m_ObjectHideFlags: 0

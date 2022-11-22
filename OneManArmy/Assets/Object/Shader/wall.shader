@@ -11,16 +11,20 @@ Shader "Custom/Wall"
     {
         Tags { "RenderType"="Opaque" }
         LOD 200
-
-        Stencil
+            Pass
         {
-            Ref 1 
+           
+               Stencil
+          {
+            Ref 1
             Comp Always
             Pass Replace
+           }
         }
+       
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows
+        #pragma surface surf Standard fullforwardshadows 
 
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0

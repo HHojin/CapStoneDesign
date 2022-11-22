@@ -16,7 +16,7 @@ Shader "Custom/outline"
         {
             Ref 1
             Comp Equal
-            Pass Replace
+            Pass Keep
         }
             
         CGPROGRAM
