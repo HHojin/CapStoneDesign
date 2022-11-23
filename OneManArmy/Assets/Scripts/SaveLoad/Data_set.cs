@@ -16,7 +16,6 @@ public class Data_set
     public int Level;
     public int SceneNumber;
     public Vector3 Pos;
-    
 
     public Data_set() //√ ±‚»≠
     {
@@ -30,7 +29,6 @@ public class Data_set
         Level = 0;
         SceneNumber = 1;
         Pos = Vector3.zero;
-
     }
 
 }
