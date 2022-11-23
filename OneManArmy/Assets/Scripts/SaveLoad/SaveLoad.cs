@@ -95,6 +95,31 @@ public class SaveLoad : MonoBehaviour
 
         Debug.Log(path);
     }
+    public void LoadData(int i)
+    {
+        SLdata = File.ReadAllText(path + FILENAME);
+        Data_set Load = JsonUtility.FromJson<Data_set>(SLdata); // 읽어오는 부분
+
+        if (Load.MaxHP == 0)
+            return;
+
+        //Player 찾아서 Stat 변경 
+        ps = GameObject.FindObjectOfType<PlayerStat>();
+        ps.MaxHP.SetStat(Load.MaxHP);
+        ps.Current_HP = Load.Current_HP;
+        ps.Move_speed = Load.Move_speed;
+        ps.Attack_power.SetStat(Load.Attack_power);
+        ps.Stealth.SetStat(Load.Stealth);
+        ps.Armor.SetStat(Load.Armor);
+        ps.EXP = Load.EXP;
+        ps.Level = Load.Level;
+        
+        ps.transform.GetChild(0).GetComponent<Move>().MoveStop();//이동 멈추기
+
+        UIManager.instance.UpdateHp(ps.Current_HP); // UI 업데이트
+
+        Debug.Log(path);
+    }
 
     public void LoadScene() //메인화면에서 이어하기 선택할 시 이 함수 사용 후 LoadData함수 호출 
     {
