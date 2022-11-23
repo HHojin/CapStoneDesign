@@ -42,7 +42,7 @@ public class EnemyStat : MonoBehaviour
     {
         if (Currnet_HP <= 0)
         {
-            GetComponent<CapsuleCollider>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
             //플레이어에게 경험치 줌 
             player_stat.EXP += this.EXP;
             //EXP 체크 이후 레벨상승 시 발생 이벤트 
