@@ -40,7 +40,7 @@ public class SaveLoad : MonoBehaviour
     }
 
     //test Code 입니다. 테스트 이후 삭제
-    void Update()
+  /*  void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) //savePoint랑 만나면 Save, Load 버튼을 누르면 Load
         {
@@ -50,7 +50,7 @@ public class SaveLoad : MonoBehaviour
         { 
             LoadData();//이부분은 파일 읽기 + 적용 
         }
-    }
+    }*/
 
     public void SaveData()
     {  //시간이 남으면 플레이어 스탯을 다른 클래스로 분할시켜 하드코딩요소 제거..
