@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAudioController : MonoBehaviour
 {
     public AudioClip audioScream;
     public AudioClip audioAttack;
+    public AudioClip audioDamaged;
     public AudioClip audioDeath;
     AudioSource audioSource;
 
@@ -25,6 +24,9 @@ public class EnemyAudioController : MonoBehaviour
                 break;
             case "Attack":
                 audioSource.clip = audioAttack;
+                break;
+            case "Damaged":
+                audioSource.clip = audioDamaged;
                 break;
             case "Death":
                 audioSource.clip = audioDeath;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,7 +10,7 @@ public class GameManager : MonoBehaviour
             {
                 m_instance = FindObjectOfType<GameManager>();
             }
-            //싱글턴 오브젝트 반환
+
             return m_instance;
         }
     }

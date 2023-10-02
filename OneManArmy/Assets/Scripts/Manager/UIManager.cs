@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -99,7 +98,7 @@ public class UIManager : MonoBehaviour
 
                 statUI.SetActive(active);
 
-                SaveLoad.instance.SaveData();  // 스탯 분배후 세이브
+                SaveLoad.instance.SaveData();
             }
             else
             {

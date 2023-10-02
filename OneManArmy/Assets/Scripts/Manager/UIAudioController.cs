@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIAudioController : MonoBehaviour
 {
-    public AudioClip audioStatBtn; // Ω∫≈» ∫–πË«œ¥¬ button
-    public AudioClip audioStatDecideBtn; // Ω∫≈» Undo Accept button
+    public AudioClip audioStatBtn;
+    public AudioClip audioStatDecideBtn;
     AudioSource audioSource;
 
     void Awake()

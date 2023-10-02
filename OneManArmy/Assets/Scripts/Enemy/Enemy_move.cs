@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
 
 public class Enemy_move : MonoBehaviour
 {
@@ -18,14 +15,12 @@ public class Enemy_move : MonoBehaviour
         GOplayer = GameObject.FindWithTag("Player");   
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         NVagent = this.GetComponent<NavMeshAgent>();
         NVagent.speed = stat.Move_speed;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (trace)
@@ -33,7 +28,6 @@ public class Enemy_move : MonoBehaviour
             NVagent.SetDestination(GOplayer.transform.position);
             GetComponent<EnemyAnimationControl>().WalkAnim(true);
 
-            // player가 탐지 됬을 때 Scream 한 후 이동
             if (GetComponent<EnemyAnimationControl>().animator.GetCurrentAnimatorStateInfo(0).fullPathHash ==
                 Animator.StringToHash("Base Layer.Walk Aggro"))
             {

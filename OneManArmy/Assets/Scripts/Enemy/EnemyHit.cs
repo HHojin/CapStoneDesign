@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
@@ -9,7 +7,7 @@ public class EnemyHit : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.LogWarning("Enemy's Hit");//利 单固瘤 贸府
+            Debug.LogWarning("Enemy's Hit");
             other.transform.parent.GetComponent<PlayerStat>().TakeDamage(Enemy.GetComponent<EnemyStat>().Attack_power.GetStat());
             Debug.LogWarning(other.transform.parent.GetComponent<PlayerStat>().Current_HP);
         }

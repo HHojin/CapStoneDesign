@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioScream: {fileID: 8300000, guid: d7d9996f9f75e8241a823fa2d2b577ac, type: 3}
   audioAttack: {fileID: 8300000, guid: bade009de7d28604c8992dd0522298ec, type: 3}
+  audioDamaged: {fileID: 8300000, guid: 7a497acdd82b88641b45d1d640399388, type: 3}
   audioDeath: {fileID: 8300000, guid: 3af445de8621bb84f941a7134facbd0d, type: 3}
 --- !u!82 &1480872158848324236
 AudioSource:

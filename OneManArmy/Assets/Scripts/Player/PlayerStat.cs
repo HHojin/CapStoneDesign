@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerStat : MonoBehaviour
 {
@@ -37,7 +34,6 @@ public class PlayerStat : MonoBehaviour
         {
             this.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = false;
 
-            //사망이벤트, 게임오버 씬으로 이동
             this.transform.GetChild(0).GetComponent<AnimationControl>().DeathAnim();
             GameManager.instance.GameOver();
         }
@@ -46,12 +42,12 @@ public class PlayerStat : MonoBehaviour
     public void EXPcheck()
     {
         Debug.LogWarning("EXPcheck");
-        //레벨 상승 
-        if (this.EXP >= 100)//레벨업 필요수치는 배열로? 고정?
+
+        if (this.EXP >= 100)
         {
             this.Level++;
             this.EXP = 0;
-            //UI/UX
+
             GameManager.instance.LevelUP();
         }
         TraceTriggerUpdate();
